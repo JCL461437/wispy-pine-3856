@@ -34,6 +34,24 @@ RSpec.describe 'Welcome Index Page', type: :feature do
         expect(page.status_code).to eq 200
 
         expect(current_path).to eq("/foods")
+
+        expect(page).to have_content() 
+      end
+      
+      it 'I should be on page "/foods" and I see a lsit of TEN foods that contain the ingredient "sweet potatoes"' do
+        
+        visit root_path
+        
+        expect(current_path).to eq("/")
+        
+        stub_request(:get, "https://api.nal.usda.gov/foods/search").to_return(status: 200, body: '')
+        
+        fill_in :q, with: 'sweet potatoes'
+        click_button 'Search'
+
+        expect(page.status_code).to eq 200
+
+        expect(current_path).to eq("/foods")
       end
     end
   end
