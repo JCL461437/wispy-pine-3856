@@ -28,7 +28,7 @@ RSpec.describe 'Welcome Index Page', type: :feature do
         
         stub_request(:get, "https://api.nal.usda.gov/foods/search").to_return(status: 200, body: '')
         
-        fill_in :search, with: 'sweet potatoes'
+        fill_in :q, with: 'sweet potatoes'
         click_button 'Search'
 
         expect(page.status_code).to eq 200
