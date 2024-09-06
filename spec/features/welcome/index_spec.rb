@@ -21,9 +21,17 @@ RSpec.describe 'Welcome Index Page', type: :feature do
   describe 'When I visit the root "/" ' do
     context 'In the search form I fill in the field with "sweet potatoes" and I click serach' do
       it 'I should be on page "/foods" and I see the total of the number of items returned by the search ' do
+        
         visit root_path
-
+        
         expect(current_path).to eq("/")
+        
+        stub_request(:get, "https://api.nal.usda.gov/foods/search").to_return(status: 200, body: '')
+        
+        fill_in :search, with: 'sweet potatoes'
+        click_button 'Search'
+
+        expect(page.status_code).to eq 200
 
         expect(current_path).to eq("/foods")
       end
