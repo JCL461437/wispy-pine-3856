@@ -14,3 +14,17 @@
 # - The food's Brand Owner
 # - The food's ingredients
 
+require 'rails_helper'
+
+RSpec.describe 'Welcome Index Page', type: :feature do
+
+  describe '' do
+
+    context '' do
+
+      it '' do
+
+      end
+    end
+  end
+end
