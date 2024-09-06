@@ -18,12 +18,14 @@ require 'rails_helper'
 
 RSpec.describe 'Welcome Index Page', type: :feature do
 
-  describe '' do
+  describe 'When I visit the root "/" ' do
+    context 'In the search form I fill in the field with "sweet potatoes" and I click serach' do
+      it 'I should be on page "/foods" and I see the total of the number of items returned by the search ' do
+        visit root_path
 
-    context '' do
+        expect(current_path).to eq("/")
 
-      it '' do
-
+        expect(current_path).to eq("/foods")
       end
     end
   end

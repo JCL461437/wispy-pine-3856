@@ -1,4 +1,4 @@
-class WelcomeController < ApplicationController
+class FoodsController < ApplicationController
   def index
     #refactor to service object
     connection = Faraday.new('https://api.nal.usda.gov') do |faraday|
